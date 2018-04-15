@@ -1,0 +1,33 @@
+/******************************************
+*  Author : Author
+*  Created On : Mon Apr 02 2018
+*  File : body.scss
+*******************************************/
+html {
+    font-size: 12px !important;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #262D31;
+    background: linear-gradient(214deg, #232323, #333333, #264157, #3689a0, #444444, #264157);
+    font-size: 12px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    min-height: 100vh;
+    top: 0;
+   // display: none;
+    position: relative;
+    float: left;
+    animation: Gradient_Flow 1.6s ease-in-out infinite ;
+}
+
+#root {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    padding: 20px;
+    margin: 0;
+}

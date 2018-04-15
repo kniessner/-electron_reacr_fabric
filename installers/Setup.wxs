@@ -1,0 +1,39 @@
+﻿<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="*" Name="theAPP Machine-Wide Installer" Language="1033" Version="!(bind.FileVersion.theAPP.exe)" UpgradeCode="9f5ec885-894e-55c9-9ead-0c9c24870b17" Manufacturer="Sascha-Darius Knießner">
+
+    <Package Description="#Description" Comments="Comments" InstallerVersion="200" Compressed="yes"/>
+		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
+
+    <PropertyRef Id="NETFRAMEWORK45" />
+
+    <Condition Message="This application requires .NET Framework 4.5. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONROOTDIRECTORY" Name="theAPP Installer" />
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+      <Component Id="theAPP.exe" Guid="bc5d9586-fba1-5492-a03a-36813267c1fa">
+        <File Id="theAPP.exe" Name="theAPP.exe" Source="./Setup.exe" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="RegistryEntries" Guid="ec264d12-8862-53c5-bc7b-9ea214db6044">
+        <RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run">
+          <RegistryValue Type="expandable" Name="theAPPMachineInstaller" Value="%ProgramFiles%\theAPP Installer\theAPP.exe --checkInstall" />
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="MainApplication" Title="Main Application" Level="1">
+      <ComponentRef Id="theAPP.exe" />
+      <ComponentRef Id="RegistryEntries" />
+    </Feature>
+  </Product>
+</Wix>
+

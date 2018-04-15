@@ -1,0 +1,166 @@
+svg {
+  width: 100%;
+      border: 1px solid silver;
+     background: rgba(98, 158, 248,0.7);
+      padding: 10px;
+      border-radius: 4px;
+        cursor: default;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        &:not(.active):not(.ctrl) {
+          cursor: crosshair;
+          path.link {
+            cursor: pointer;
+          }
+        }
+}
+
+.node {
+  position: absolute; //background: transparent url("") no-repeat 50%;
+  border: 1px white solid;
+  overflow: hidden;
+  opacity: 0.9;
+  -webkit-transition: opacity .8s;
+  transition: opacity .8s;
+}
+.node circle {
+  fill: #999;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.node--internal circle {
+  fill: #555;
+}
+
+.node--internal text {
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #555;
+  stroke-opacity: 0.4;
+  stroke-width: 1.5px;
+}
+
+
+
+path.link {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.5);
+  stroke-width: 1px;
+  cursor: default;
+}
+path.link.selected {
+  stroke-dasharray: 10, 2;
+}
+path.link.dragline {
+  pointer-events: none;
+}
+path.link.hidden {
+  stroke-width: 0;
+}
+
+circle.node {
+  stroke-width: 1.5px;
+  cursor: pointer;
+}
+
+circle.node.reflexive {
+  stroke: #000 !important;
+  stroke-width: 2.5px;
+}
+
+#bubble text {
+  fill: white;
+}
+
+text {
+  font: 14px sans-serif;
+  pointer-events: none;
+}
+
+text.id {
+  text-anchor: middle;
+  font-weight: bold;
+}
+
+
+/*.node .label {
+  display: inline;
+  font-family: sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  -webkit-transition: -webkit-filter .8s;
+  transition: -webkit-filter .8s;
+  transition: filter .8s;
+  transition: filter .8s, -webkit-filter .8s;
+}*/
+
+.node .label {
+  display: inline;
+  font-family: sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 10px;
+  font-size: 13px;
+  margin: 0;
+  top: 0%;
+  width: 100%;
+  float: left;
+}
+
+.level_1.node .label {
+  margin: 60% 0;
+  font-size: 14px;
+  font-weight: boder;
+}
+
+.node:hover {
+  opacity: 0.5;
+}
+
+.node:hover .label {
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+}
+
+.node.level-0 {
+  z-index: 4;
+  font-size: 15vmin;
+  display: none;
+}
+
+.node.level-1 {
+  z-index: 3;
+  font-size: 10vmin;
+}
+
+.node.level-2 {
+  z-index: 2;
+  font-size: 5vmin;
+}
+
+.node.level-3 {
+  z-index: 1;
+  font-size: 2.5vmin;
+}
+
+.clicked {
+  background-color: red;
+}
+
